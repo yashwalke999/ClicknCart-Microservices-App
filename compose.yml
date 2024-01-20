@@ -1,0 +1,70 @@
+
+version: '3'
+services:
+  zipkin-container:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+  service-discovery-container:
+    image: yashw/service-discovery-ecommerce-boot:0.1.0
+    ports:
+      - 8761:8761
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  cloud-config-container:
+    image: yashw/cloud-config-ecommerce-boot:0.1.0
+    ports:
+      - 9296:9296
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  api-gateway-container:
+    image: yashw/api-gateway-ecommerce-boot:0.1.0
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  proxy-client-container:
+    image: yashw/proxy-client-ecommerce-boot:0.1.0
+    ports:
+      - 8900:8900
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  order-service-container:
+    image: yashw/order-service-ecommerce-boot:0.1.0
+    ports:
+      - 8300:8300
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  payment-service-container:
+    image: yashw/payment-service-ecommerce-boot:0.1.0
+    ports:
+      - 8400:8400
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  product-service-container:
+    image: yashw/product-service-ecommerce-boot:0.1.0
+    ports:
+      - 8500:8500
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  shipping-service-container:
+    image: yashw/shipping-service-ecommerce-boot:0.1.0
+    ports:
+      - 8600:8600
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  user-service-container:
+    image: yashw/user-service-ecommerce-boot:0.1.0
+    ports:
+      - 8700:8700
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+  favourite-service-container:
+    image: yashw/favourite-service-ecommerce-boot:0.1.0
+    ports:
+      - 8800:8800
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+
+
+
